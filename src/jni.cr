@@ -8,9 +8,9 @@ lib JNI
     # 32-bit int primitive
     type JInt = Int32
   end
-  #type Byte = Byte
-  #type Short = Short
-  #type Long = Long
+  type JByte = Char
+  type JShort = Int8
+  type JLong = Int64
   ifdef x86_64
     #64-bit float primitive
     type JFloat = Float64
@@ -18,31 +18,39 @@ lib JNI
     #32-bit float-primitive
     type JFloat = Float32
   end
-  #type Double = Double
+  type JDouble = Int16
   # char-primitive
   type JChar = Char
   # boolean-primitive
   type JBoolean = Bool
 
-  alias JObject = Object
-  alias JClass = Class
-  alias JString = String
-  alias JThrowable = Exception
-  alias JArray = Array
-  ifdef x86_64
-    alias JIntArray = Array(Int64)
-  else
-    alias JIntArray = Array(Int32)
+  struct JObject
   end
-  #alias JByteArray = Array(Byte)
-  #alias JShortArray = Array(Short)
-  #alias JLongArray = Array(Long)
-  ifdef x86_64
-    alias JFloatArray = Array(Float64)
-  else
-    alias JFloatArray = Array(Float32)
+
+  alias JClass = JObject
+  alias JThrowable = JObject
+  alias JString = JObject
+  alias JArray = JObject
+  alias JIntArray = JArray
+  alias JByteArray = JArray
+  alias JShortArray = JArray
+  alias JLongArray = JArray
+  alias JFloatArray = JArray
+  alias JDoubleArrray = JArray
+  alias JCharArray = JArray
+  alias JBooleanArray = JArray
+
+  alias JWeak = JObject
+
+  union JValue
+    z: JBoolean
+    b: JByte
+    c: JChar
+    s: JShort
+    i: JInt
+    j: JLong
+    f: JFloat
+    d: JDouble
+    l: JObject
   end
-  #alias JDoubleArrray = Array(Double)
-  alias JCharArray = Array(Char)
-  alias JBooleanArray = Array(Bool)
 end
