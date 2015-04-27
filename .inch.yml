@@ -1,0 +1,8 @@
+language: ruby
+files:
+  included:
+    - src/**/*.cr
+    - docs/**/*.cr
+  excluded:
+    - samples/**/*.cr
+    - spec/**/*.cr
