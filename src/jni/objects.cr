@@ -1,4 +1,3 @@
-@[Link("jni")]
 lib JNI
   struct JObject
   end

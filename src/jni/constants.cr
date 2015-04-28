@@ -1,4 +1,3 @@
-@[Link("jni")]
 lib JNI
   # Return values from JObjectRefType
   enum JObjectRefType

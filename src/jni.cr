@@ -1,6 +1,5 @@
 require "./jni/*"
 
-@[Link("jni")]
 lib JNI
   union JValue
     z: JBoolean

@@ -1,4 +1,3 @@
-@[Link("jni")]
 lib JNI
   # Java Primitive Mappings
   ifdef x86_64
