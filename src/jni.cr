@@ -47,9 +47,6 @@ lib JNI
   struct JNIInvokeInterface
   end
 
-  struct JavaVM
-  end
-
   struct JNINativeInterface
     reserved0: Void
     reserved1: Void
