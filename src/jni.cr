@@ -37,9 +37,6 @@ lib JNI
   struct JNINativeInterface
   end
 
-  struct JNIEnv
-  end
-
   ##
   # JNI Invocation Interface
   ##

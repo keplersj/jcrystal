@@ -1,9 +1,11 @@
 require "./primitives"
 require "./objects"
+require "./env"
 
 lib JNI
   struct JavaVM
   end
+  alias JNIEnv = Void
 
   struct JavaVMOption
     optionString: Char*
@@ -24,6 +26,6 @@ lib JNI
   end
 
   fun get_default_java_vm_init_args = JNI_GetDefaultJavaVMInitArgs(args: Void*): JInt
-  fun create_java_vm = JNI_CreateJavaVM(pvm: JavaVM, penv: Void, args: Void*): JInt
+  fun create_java_vm = JNI_CreateJavaVM(pvm: JavaVM, penv: JNIEnv, args: JavaVMInitArgs): JInt
   fun get_created_java_vms = JNI_GetCreatedJavaVMs(vm: JavaVM, size: JSize, size2: JSize*): JInt
 end
