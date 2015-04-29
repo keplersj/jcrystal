@@ -11,25 +11,35 @@ lib LibJNI
   # JBoolean Constants
   ##
 
-  JNI_FALSE = 0
-  JNI_TRUE = 1
+  FALSE = 0
+  TRUE = 1
 
   ##
   # Possible return values for JNI functions
   ##
 
-  JNI_OK = 0          # success
-  JNI_ERR = -1        # unknown error
-  JNI_EDETACHED = -2  # thread detached
-  JNI_EVERSION = -3   # JNI version error
-  JNI_ENOMEM = -4     # not enough memory
-  JNI_EECIST = -5     # VM already created
-  JNI_EINVAL = -6     # invalid arguements
+  OK = 0          # success
+  ERR = -1        # unknown error
+  EDETACHED = -2  # thread detached
+  EVERSION = -3   # JNI version error
+  ENOMEM = -4     # not enough memory
+  EECIST = -5     # VM already created
+  EINVAL = -6     # invalid arguements
 
   ##
   # Used in ReleaseScalarArrayElements
   ##
 
-  JNI_COMMIT = 1
-  JNI_ABORT = 2
+  COMMIT = 1
+  ABORT = 2
+
+  ##
+  # JVM Version Constants
+  ##
+
+  VERSION_1_1 = 0x00010001
+  VERSION_1_2 = 0x00010002
+  VERSION_1_4 = 0x00010004
+  VERSION_1_6 = 0x00010006
+  VERSION_1_8 = 0x00010001
 end
