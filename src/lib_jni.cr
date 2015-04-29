@@ -1,6 +1,6 @@
-require "./jni/*"
+require "./lib_jni/*"
 
-lib JNI
+lib LibJNI
   union JValue
     z: JBoolean
     b: JByte

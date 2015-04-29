@@ -1,4 +1,4 @@
-lib JNI
+lib LibJNI
   struct JObject
   end
 
