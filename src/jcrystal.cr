@@ -1,4 +1,4 @@
-require "./lib_jni.cr"
+require "./lib_jni"
 
 def jimport(package)
   object "#{package}"
@@ -18,7 +18,7 @@ module JCrystal
       options:: LibJNI::JavaVMOption
       #Path to the java source code
       #options.optionString = "-Djava.class.path=D:\\Java Src\\TestStruct"
-      vm_args.version = LibJNI::JNI_VERSION_1_8 #JDK version. This indicates version 1.6
+      vm_args.version = LibJNI::VERSION_1_8 #JDK version. This indicates version 1.8
       vm_args.nOptions = 1
       vm_args.ignoreUnrecognized = 0
 

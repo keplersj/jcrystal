@@ -1,6 +1,5 @@
 require "./primitives"
 require "./objects"
-require "./env"
 
 lib LibJNI
   struct JavaVM
