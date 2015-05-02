@@ -1,13 +1,7 @@
 require "./lib_jni"
 
-def jimport(package)
-  object "#{package}"
-end
-
-private def object(package: String)
-  #puts "This will return an Object representing the Java Object soon."
-  #package.split(.)
-  return LibJNI::JObject
+macro jimport(object)
+  alias {{object.split(".").last.id}} = LibJNI::JObject
 end
 
 module JCrystal
