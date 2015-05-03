@@ -3,6 +3,7 @@ require "./objects"
 
 lib JNI
   struct JavaVM
+    #functions: JNIInvokeInterface
   end
   alias JNIEnv = Void
 
