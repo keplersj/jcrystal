@@ -1,6 +1,6 @@
+require "../src/jni/java_vm"
+
 lib JNI
-  struct JNIEnv
-  end
   struct JObject
   end
 end

@@ -5,7 +5,8 @@ lib JNI
   struct JavaVM
     #functions: JNIInvokeInterface
   end
-  alias JNIEnv = Void
+  struct JNIEnv
+  end
 
   struct JavaVMOption
     optionString: Char*
