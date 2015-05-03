@@ -1,55 +1,26 @@
-class JObject < Object
-end
+require "./jni/*"
 
-class JClass < JObject
-end
+lib JNI
+  ##
+  # JNI Native Method Interface
+  ##
 
-class JThrowable < JObject
-end
+  struct JNINativeInterface
+  end
 
-class JString < JObject
-end
+  ##
+  # JNI Invocation Interface
+  ##
 
-class JString < JObject
-end
+  struct JNIInvokeInterface
+  end
 
-class JArray < JObject
-end
+  struct JNINativeInterface
+    reserved0: Void
+    reserved1: Void
+    reserved2: Void
 
-class JBooleanArray < JArray
-end
+    reserved3: Void
+  end
 
-class JByteArray < JArray
-end
-
-class JCharArray < JArray
-end
-
-class JShortArray < JArray
-end
-
-class JIntArray < JArray
-end
-
-class JLongArray < JArray
-end
-
-class JFloatArray < JArray
-end
-
-class JDoubleArray < JArray
-end
-
-class JObjectArray < JArray
-end
-
-class JNIEnv
-end
-
-class JavaVM
-  abstract def destroy_java_vm
-  abstract def attach_current_thread(penv: JNIEnv, args)
-  abstract def detach_current_thread
-  abstract def get_env(penv: JNIEnv, version: JInt)
-  abstract def attach_current_thread_as_deamon(penv: JNIEnv, args)
 end

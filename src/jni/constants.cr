@@ -1,4 +1,4 @@
-lib LibJNI
+lib JNI
   # Return values from JObjectRefType
   enum JObjectRefType
     JNIInvalidRefType = 0

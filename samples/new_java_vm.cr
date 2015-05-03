@@ -1,3 +1,3 @@
 require "../src/jcrystal"
 
-vm = JCrystal.create_vm(LibJNI::JavaVM.new)
+vm = JCrystal.create_vm(JNI::JavaVM.new)

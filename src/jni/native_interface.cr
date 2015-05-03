@@ -4,7 +4,7 @@ require "./definitions"
 require "./java_vm"
 require "./constants"
 
-lib LibJNI
+lib JNI
   fun get_version = JNINativeInterface_GetVersion(env: JNIEnv): JInt
 
   fun define_class = JNINativeInterface_DefineClass(env: JNIEnv, name: Char*, loader: JObject, buf: JByte, len: JSize): JClass

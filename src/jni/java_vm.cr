@@ -1,7 +1,7 @@
 require "./primitives"
 require "./objects"
 
-lib LibJNI
+lib JNI
   struct JavaVM
   end
   alias JNIEnv = Void

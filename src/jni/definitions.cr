@@ -1,7 +1,7 @@
 require "./primitives"
 require "./objects"
 
-lib LibJNI
+lib JNI
   union JValue
     z: JBoolean
     b: JByte

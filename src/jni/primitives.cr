@@ -1,4 +1,4 @@
-lib LibJNI
+lib JNI
   # Java Primitive Mappings
   ifdef x86_64
     # 64-bit int primitive

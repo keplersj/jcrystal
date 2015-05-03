@@ -1,4 +1,4 @@
-require "./lib_jni"
+require "./jni"
 
 macro jimport(object)
   alias {{object.split(".").last.id}} = LibJNI::JObject
