@@ -1,9 +1,5 @@
 require "../src/jni/java_vm"
-
-lib JNI
-  struct JObject
-  end
-end
+require "../src/jni/objects"
 
 fun crystal_log = Java_JavahExample_crystalLog(env: JNI::JNIEnv, obj: JNI::JObject): Void
   # We need to initialize the GC
