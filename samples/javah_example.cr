@@ -1,5 +1,4 @@
-require "../src/jni/java_vm"
-require "../src/jni/objects"
+require "../src/jcrystal"
 
 fun crystal_log = Java_JavahExample_crystalLog(env: JNI::JNIEnv, obj: JNI::JObject): Void
   # We need to initialize the GC
