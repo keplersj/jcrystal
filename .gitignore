@@ -1,1 +1,6 @@
 .crystal
+*.class
+*.h
+*.jnilib
+*.so
+*.dll
