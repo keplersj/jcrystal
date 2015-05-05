@@ -1,14 +1,19 @@
 require "../src/jcrystal"
 
 fun crystal_log = Java_JavahExample_crystalLog(env: JNI::JNIEnv, obj: JNI::JObject): Void
-  # We need to initialize the GC
-  GC.init
-
-  # We need to invoke Crystal's "main" function, the one that initializes
-  # all constants and runs the top-level code (none in this case, but without
-  # constants like STDOUT and others the last line will crash).
-  # We pass 0 and null to argc and argv.
-  LibCrystalMain.__crystal_main(0, Pointer(Pointer(UInt8)).null)
-
+  init_crystal
   puts "Hello from Crystal!"
+end
+
+fun crystal_log_environment = Java_JavahExample_crystalLogsEnvironment(env: JNI::JNIEnv, obj: JNI::JObject): Void
+  init_crystal
+  puts env
+  puts env.to_s
+end
+
+fun crystal_loggin_found_java = Java_JavahExample_crystalLoggingFoundJavaClass(jenv: JNI::JNIEnv, obj: JNI::JObject): Void
+  init_crystal
+  #logger = jimport "java.lang.Logger"
+  logger = JNI::JObject
+  puts logger
 end

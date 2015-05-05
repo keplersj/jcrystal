@@ -1,10 +1,24 @@
 require "./jni"
 
 macro jimport(object)
-  alias {{object.split(".").last.id}} = JNI::JObject
+  JNI.find_class(jenv, {{object.gsub(/\./, "/")}})
+  #JNI::JObject
+end
+
+macro init_crystal
+  # We need to initialize the GC
+  GC.init
+
+  # We need to invoke Crystal's "main" function, the one that initializes
+  # all constants and runs the top-level code (none in this case, but without
+  # constants like STDOUT and others the last line will crash).
+  # We pass 0 and null to argc and argv.
+  LibCrystalMain.__crystal_main(0, Pointer(Pointer(UInt8)).null)
 end
 
 module JCrystal
+  setter env
+
   def self.create_vm(jvm: JNI::JavaVM)
       env = JNI::JNIEnv.new
 
@@ -24,5 +38,21 @@ module JCrystal
       #end
 
       #return env
+  end
+end
+
+struct JNI::JClass
+  def is_a?(clazz: JClass)
+    JNI::JEnv.is_assignable_from(self, clazz)
+  end
+end
+
+struct JNI::JObject
+  def is_a?(obj: JObject)
+    JNI::JEnv.is_same_object(self, obj)
+  end
+
+  def is_a?(clazz: JClass)
+    JNI::JEnv.is_instance_of(self, clazz)
   end
 end

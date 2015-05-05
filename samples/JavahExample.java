@@ -4,8 +4,13 @@ public class JavahExample {
    }
 
    private native void crystalLog();
+   private native void crystalLoggingFoundJavaClass();
+   private native void crystalLogsEnvironment();
 
    public static void main(String[] args) {
-      new JavahExample().crystalLog();
+      JavahExample clazz = new JavahExample();
+      clazz.crystalLog();
+      clazz.crystalLogsEnvironment();
+      //clazz.crystalLoggingFoundJavaClass();
    }
 }
