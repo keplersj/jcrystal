@@ -6,11 +6,11 @@ require "./constants"
 
 lib JNI
   struct JNINativeInterface
-    reserved0: Void
-    reserved1: Void
-    reserved2: Void
+    reserved0: Void*
+    reserved1: Void*
+    reserved2: Void*
 
-    reserved3: Void
+    reserved3: Void*
   end
   fun get_version = JNINativeInterface__GetVersion(env: JNIEnv): JInt
 
@@ -281,464 +281,661 @@ lib JNI
 end
 
 struct JNI::JNINativeInterface
-    def get_version(env: JNIEnv)
-    end
-
-    def define_class(env: JNIEnv, name: String, loader: JObject, buf: JByte, len: JSize)
-    end
-    def find_class(env: JNIEnv, name: Char)
-    end
-
-    def from_reflected_method(env: JNIEnv, method: JObject)
-    end
-    def from_reflected_field(env: JNIEnv, field: JObject)
-    end
-
-    def to_reflected_method(env: JNIEnv, cls: JClass, methodID: JMethodID, isStacic: JBoolean)
-    end
-
-    def get_superclass(env: JNIEnv, sub: JClass)
-    end
-    def is_assignable_from(env: JNIEnv, sub: JClass, sup: JClass)
-    end
-
-    def to_relfected_field(env: JNIEnv, cls: JClass, fieldID: JFieldID, isStatic: JBoolean)
-    end
-
-    def throw(env: JNIEnv, obj: JThrowable)
-    end
-    def throw_new(env: JNIEnv, clazz: JClass, msg: String)
-    end
-    def exception_occurred(env: JNIEnv)
-    end
-    def exception_describe(env: JNIEnv)
-    end
-    def exception_clear(env: JNIEnv)
-    end
-    def fatal_error(env: JNIEnv, msg: String)
-    end
-
-    def push_local_frame(env: JNIEnv, capacity: JInt)
-    end
-    def pop_local_frame(env: JNIEnv, result: JObject)
-    end
-
-    def new_global_ref(env: JNIEnv, lobj: JObject)
-    end
-    def delete_global_ref(env: JNIEnv, gref: JObject)
-    end
-    def delete_local_ref(env: JNIEnv, obj: JObject)
-    end
-    def is_same_object(env: JNIEnv, obj: JObject, obj2: JObject)
-    end
-    def new_local_ref(env: JNIEnv, ref: JObject)
-    end
-    def ensure_local_capacity(env: JNIEnv, capacity: JInt)
-    end
-
-    def alloc_object(env: JNIEnv, clazz: JClass)
-    end
-    def new_object(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def new_object_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def get_object_class(env: JNIEnv, obj: JObject)
-    end
-    def is_instance_of(env: JNIEnv, obj: JObject, clazz: JClass)
-    end
-
-    def get_method_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
-    end
-
-    def call_object_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_object_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_boolean_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_boolean_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_byte_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_byte_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_char_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_char_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_short_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_short_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_int_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_int_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_long_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_long_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_float_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_float_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_double_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_double_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_void_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
-    end
-    def call_void_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_object_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_object_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_boolean_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_boolean_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_byte_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_byte_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_char_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_char_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_short_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_short_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_int_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_int_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_long_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_long_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_float_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_float_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_double_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_double_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_nonvirtual_void_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_nonvirtual_void_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def get_field_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
-    end
-
-    def get_object_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_boolean_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_char_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_short_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_int_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_long_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_float_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-    def get_double_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
-    end
-
-    def set_object_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JObject)
-    end
-    def set_boolean_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JBoolean)
-    end
-    def set_byte_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JByte)
-    end
-    def set_char_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JChar)
-    end
-    def set_short_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JShort)
-    end
-    def set_int_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JInt)
-    end
-    def set_long_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JLong)
-    end
-    def set_float_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JFloat)
-    end
-    def set_double_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JDouble)
-    end
-
-    def get_static_method_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
-    end
-
-    def call_static_object_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_object_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_boolean_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_boolean_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_byte_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_byte_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_char_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_char_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_short_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_short_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_int_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_int_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_long_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_long_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_float_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_float_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_double_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_double_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def call_static_void_method(env: JNIEnv, cls: JClass, methodID: JMethodID, *args)
-    end
-    def call_static_void_method_a(env: JNIEnv, cls: JClass, methodID: JMethodID, args: Array(JValue))
-    end
-
-    def get_static_field_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
-    end
-    def get_static_object_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_boolean_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_byte_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_char_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_short_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_int_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_long_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_float_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-    def get_static_double_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
-    end
-
-    def set_static_object_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JObject)
-    end
-    def set_static_boolean_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JBoolean)
-    end
-    def set_static_byte_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JByte)
-    end
-    def set_static_char_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JChar)
-    end
-    def set_static_short_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JShort)
-    end
-    def set_static_int_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JInt)
-    end
-    def set_static_long_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JLong)
-    end
-    def set_static_float_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JFloat)
-    end
-    def set_static_double_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JDouble)
-    end
-
-    def new_string(env: JNIEnv, unicode: String, len: JSize)
-    end
-    def get_string_length(env: JNIEnv, str: JString)
-    end
-    def get_string_chars(env: JNIEnv, str: JString, isCopy: JBoolean)
-    end
-    def release_string_chars(env: JNIEnv, str: JString, chars: JString)
-    end
-
-    def new_string_utf(env: JNIEnv, utf: String)
-    end
-    def new_string_utf_length(env: JNIEnv, str: JString)
-    end
-    def get_string_utf_chars(env: JNIEnv, str: String, isCopy: JBoolean)
-    end
-    def release_string_utf_chars(env: JNIEnv, str: JString, chars: String)
-    end
-
-    def get_array_length(env: JNIEnv, array: JArray)
-    end
-
-    def get_object_array(env: JNIEnv, len: JSize, clazz: JClass, init: JObject)
-    end
-    def get_object_array_element(env: JNIEnv, array: JObjectArray, index: JSize)
-    end
-    def set_object_array_element(env: JNIEnv, array: JObjectArray, index: JSize, val: JObject)
-    end
-
-    def new_boolean_array(env: JNIEnv, len: JSize)
-    end
-    def new_byte_array(env: JNIEnv, len: JSize)
-    end
-    def new_char_array(env: JNIEnv, len: JSize)
-    end
-    def new_short_array(env: JNIEnv, len: JSize)
-    end
-    def new_int_array(env: JNIEnv, len: JSize)
-    end
-    def new_long_array(env: JNIEnv, len: JSize)
-    end
-    def new_float_array(env: JNIEnv, len: JSize)
-    end
-    def new_double_array(env: JNIEnv, len: JSize)
-    end
-
-    def get_boolean_array_elements(env: JNIEnv, array: JBooleanArray, isCopy: JBoolean)
-    end
-    def get_byte_array_elements(env: JNIEnv, array: JByteArray, isCopy: JBoolean)
-    end
-    def get_char_array_elements(env: JNIEnv, array: JCharArray, isCopy: JBoolean)
-    end
-    def get_short_array_elements(env: JNIEnv, array: JShortArray, isCopy: JBoolean)
-    end
-    def get_int_array_elements(env: JNIEnv, array: JIntArray, isCopy: JBoolean)
-    end
-    def get_long_array_elements(env: JNIEnv, array: JLongArray, isCopy: JBoolean)
-    end
-    def get_float_array_elements(env: JNIEnv, array: JFloatArray, isCopy: JBoolean)
-    end
-    def get_double_array_elements(env: JNIEnv, array: JDoubleArray, isCopy: JBoolean)
-    end
-
-    def release_boolean_array_elements(env: JNIEnv, array: JBooleanArray, elems: JBoolean*, mode: JInt)
-    end
-    def release_byte_array_elements(env: JNIEnv, array: JByteArray, elems: JByte*, mode: JInt)
-    end
-    def release_char_array_elements(env: JNIEnv, array: JCharArray, elems: JString, mode: JInt)
-    end
-    def release_short_array_elements(env: JNIEnv, array: JShortArray, elems: JShort*, mode: JInt)
-    end
-    def release_int_array_elements(env: JNIEnv, array: JIntArray, elems: JInt*, mode: JInt)
-    end
-    def release_long_array_elements(env: JNIEnv, array: JLongArray, elems: JLong*, mode: JInt)
-    end
-    def release_float_array_elements(env: JNIEnv, array: JFloatArray, elems: JFloat*, mode: JInt)
-    end
-    def relase_double_array_elements(env: JNIEnv, array: JDoubleArray, elems: JDouble*, mode: JInt)
-    end
-
-    def get_boolean_array_region(env: JNIEnv, array: JBooleanArray, start: JSize, l: JSize, buf: JBoolean)
-    end
-    def get_byte_array_region(env: JNIEnv, array: JByteArray, start: JSize, len: JSize, buf: JByte)
-    end
-    def get_char_array_region(env: JNIEnv, array: JCharArray, start: JSize, len: JSize, buf: JChar)
-    end
-    def get_short_array_region(env: JNIEnv, array: JShortArray, start: JSize, len: JSize, buf: JShort)
-    end
-    def get_int_array_region(env: JNIEnv, array: JIntArray, start: JSize, len: JSize, buf: JInt)
-    end
-    def get_long_array_region(env: JNIEnv, array: JLongArray, start: JSize, len: JSize, buf: JLong)
-    end
-    def get_float_array_region(env: JNIEnv, array: JFloatArray, start: JSize, len: JSize, buf: JFloat)
-    end
-    def get_double_array_region(env: JNIEnv, array: JDoubleArray, start: JSize, len: JSize, buf: JDouble)
-    end
-
-    def set_boolean_array_region(env: JNIEnv, array: JBooleanArray, start: JSize, l: JSize, buf: JBoolean)
-    end
-    def set_byte_array_region(env: JNIEnv, array: JByteArray, start: JSize, len: JSize, buf: JByte)
-    end
-    def set_char_array_region(env: JNIEnv, array: JCharArray, start: JSize, len: JSize, buf: JChar)
-    end
-    def set_short_array_region(env: JNIEnv, array: JShortArray, start: JSize, len: JSize, buf: JShort)
-    end
-    def set_int_array_region(env: JNIEnv, array: JIntArray, start: JSize, len: JSize, buf: JInt)
-    end
-    def set_long_array_region(env: JNIEnv, array: JLongArray, start: JSize, len: JSize, buf: JLong)
-    end
-    def set_float_array_region(env: JNIEnv, array: JFloatArray, start: JSize, len: JSize, buf: JFloat)
-    end
-    def set_double_array_region(env: JNIEnv, array: JDoubleArray, start: JSize, len: JSize, buf: JDouble)
-    end
-
-    def register_natives(env: JNIEnv, clazz: JClass, methods: JNINativeMethod*, nMethods: JInt)
-    end
-    def unregister_natives(env: JNIEnv, clazz: JClass)
-    end
-
-    def moniter_enter(env: JNIEnv, obj: JObject)
-    end
-    def moniter_exit(env: JNIEnv, obj: JObject)
-    end
-
-    def get_java_vm(env: JNIEnv, vm: JavaVM)
-    end
-
-    def get_string_region(env: JNIEnv, str: JString, start: JSize, len: JSize, buf: JChar)
-    end
-    def get_string_utf_region(env: JNIEnv, str: JString, start: JSize, len: JSize, buf: String)
-    end
-
-    def get_primitive_array_critical(env: JNIEnv, array: JArray, isCopy: JBoolean)
-    end
-    def release_primitive_array_critical(env: JNIEnv, array: JArray, carray: Void, mode: JInt)
-    end
-
-    def get_string_critial(env: JNIEnv, str: JString, isCopy: JBoolean)
-    end
-    def release_string_critical(env: JNIEnv, str: JString, cstring: JString)
-    end
-
-    def new_weal_global_ref(env: JNIEnv, obj: JObject)
-    end
-    def delete_weak_global_ref(env: JNIEnv, ref: JWeak)
-    end
-
-    def exception_check(env: JNIEnv)
-    end
-
-    def new_direct_byte_buffer(env: JNIEnv, address: Void*, capacity: JLong)
-    end
-    def get_direct_buffer_address(env: JNIEnv, buf: JObject)
-    end
-    def get_direct_buffer_capacity(env: JNIEnv, buf: JObject)
-    end
-    
-    def get_object_ref_type(env: JNIEnv, obj: JObject)
-    end
+  def get_version(env: JNIEnv)
+    JNI.get_version(env)
+  end
+
+  def define_class(env: JNIEnv, name: String, loader: JObject, buf: JByte, len: JSize)
+    JNI.define_class(env, name, loader, buf, len)
+  end
+  def find_class(env: JNIEnv, name: String)
+    JNI.find_class(env, name)
+  end
+
+  def from_reflected_method(env: JNIEnv, method: JObject)
+    JNI.from_reflected_method(env, method)
+  end
+  def from_reflected_field(env: JNIEnv, field: JObject)
+    JNI.from_reflected_field(env, field)
+  end
+
+  def to_reflected_method(env: JNIEnv, cls: JClass, methodID: JMethodID, isStacic: JBoolean)
+    JNI.to_reflected_method(env, cls, methodID, isStatic)
+  end
+
+  def get_superclass(env: JNIEnv, sub: JClass)
+    JNI.get_superclass(env, sub)
+  end
+  def is_assignable_from(env: JNIEnv, sub: JClass, sup: JClass)
+    JNI.is_assignable_from(env, sub, sup)
+  end
+
+  def to_relfected_field(env: JNIEnv, cls: JClass, fieldID: JFieldID, isStatic: JBoolean)
+    JNI.to_reflected_field(env, cls, fieldID, isStatic)
+  end
+
+  def throw(env: JNIEnv, obj: JThrowable)
+    JNI.throw(env, obj)
+  end
+  def throw_new(env: JNIEnv, clazz: JClass, msg: String)
+    JNI.throw_new(env, clazz, msg)
+  end
+  def exception_occurred(env: JNIEnv)
+    JNI.exception_occured(env)
+  end
+  def exception_describe(env: JNIEnv)
+    JNI.exception_describe(env)
+  end
+  def exception_clear(env: JNIEnv)
+    JNI.exception_clear(env)
+  end
+  def fatal_error(env: JNIEnv, msg: String)
+    JNI.fatal_error(env, msg)
+  end
+
+  def push_local_frame(env: JNIEnv, capacity: JInt)
+    JNI.push_local_frame(env, capacity)
+  end
+  def pop_local_frame(env: JNIEnv, result: JObject)
+    JNI.pop_local_frame(env, result)
+  end
+
+  def new_global_ref(env: JNIEnv, lobj: JObject)
+    JNI.new_global_ref(env, lobj)
+  end
+  def delete_global_ref(env: JNIEnv, gref: JObject)
+    JNI.delete_global_ref(env, gref)
+  end
+  def delete_local_ref(env: JNIEnv, obj: JObject)
+    JNI.delete_local_ref(env, obj)
+  end
+  def is_same_object(env: JNIEnv, obj: JObject, obj2: JObject)
+    JNI.is_same_object(env, obj, obj2)
+  end
+  def new_local_ref(env: JNIEnv, ref: JObject)
+    JNI.new_local_ref(env, ref)
+  end
+  def ensure_local_capacity(env: JNIEnv, capacity: JInt)
+    JNI.ensure_local_capacity(env, capacity)
+  end
+
+  def alloc_object(env: JNIEnv, clazz: JClass)
+    JNI.alloc_object(env, clazz)
+  end
+  def new_object(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.new_object(env, clazz, methodID, args)
+  end
+  def new_object_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.new_object_a(env, clazz, methodID, args)
+  end
+
+  def get_object_class(env: JNIEnv, obj: JObject)
+    JNI.get_object_class(env, obj)
+  end
+  def is_instance_of(env: JNIEnv, obj: JObject, clazz: JClass)
+    JNI.is_instance_of(env, obj, clazz)
+  end
+
+  def get_method_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
+    JNI.get_method_id(env, clazz, name, sig)
+  end
+
+  def call_object_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_object_method(env, obj, methodID, args)
+  end
+  def call_object_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_object_method_a(env, obj, methodID, args)
+  end
+
+  def call_boolean_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_boolean_metho(env, obj, methodID, args)
+  end
+  def call_boolean_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_boolean_method_a(env, obj, methodID, args)
+  end
+
+  def call_byte_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_byte_method(env, obj, methodID, args)
+  end
+  def call_byte_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_byte_method_a(env, obj, methodID, args)
+  end
+
+  def call_char_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_char_method(env, obj, methodID, args)
+  end
+  def call_char_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_char_method_a(env, obj, methodID, args)
+  end
+
+  def call_short_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_short_method(env, obj, methodID, args)
+  end
+  def call_short_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_short_method_a(env, obj, methodID, args)
+  end
+
+  def call_int_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_int_method(env, obj, methodID, args)
+  end
+  def call_int_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.cal_int_method_a(env, obj, methodID, args)
+  end
+
+  def call_long_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_long_method(env, obj, methodID, args)
+  end
+  def call_long_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_long_method_a(env, obj, methodID, args)
+  end
+
+  def call_float_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_float_method(env, obj, methodID, args)
+  end
+  def call_float_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_float_method_a(env, obj, methodID, args)
+  end
+
+  def call_double_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_double_method(env, obj, methodID, args)
+  end
+  def call_double_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_double_method_a(env, obj, methodID, args)
+  end
+
+  def call_void_method(env: JNIEnv, obj: JObject, methodID: JMethodID, *args)
+    JNI.call_void_method(env, obj, methodID args)
+  end
+  def call_void_method_a(env: JNIEnv, obj: JObject, methodID: JMethodID, args: Array(JValue))
+    JNI.call_void_method_a(env, obj, methodID, args)
+  end
+
+  def call_nonvirtual_object_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_obj_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_object_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_object_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_boolean_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_boolean_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_boolean_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    funcitons.call_nonvirutal_boolean_method_a(obj, calzz, methodID, args)
+  end
+
+  def call_nonvirtual_byte_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_byte_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_byte_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_byte_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_char_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_char_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_char_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_char_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_short_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_short_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_short_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_short_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_int_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_int_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_int_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_int_method_a(env, obj, clazz, methoID, args)
+  end
+
+  def call_nonvirtual_long_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_long_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_long_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_long_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_float_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_float_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_float_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_float_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_double_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_double_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_double_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_double_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def call_nonvirtual_void_method(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_nonvirtual_void_method(env, obj, clazz, methodID, args)
+  end
+  def call_nonvirtual_void_method_a(env: JNIEnv, obj: JObject, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_nonvirtual_void_method_a(env, obj, clazz, methodID, args)
+  end
+
+  def get_field_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
+    JNI.get_field_id(env, clazz, name, sig)
+  end
+
+  def get_object_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_object_field(env, obj, fieldID)
+  end
+  def get_boolean_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_boolean_field(env, obj, fieldID)
+  end
+  def get_char_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_char_field(env, obj, fieldID)
+  end
+  def get_short_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_short_field(env, obj, fieldID)
+  end
+  def get_int_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_int_field(env, obj, fieldID)
+  end
+  def get_long_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_long_field(env, obj, fieldID)
+  end
+  def get_float_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_float_field(env, obj, fieldID)
+  end
+  def get_double_field(env: JNIEnv, obj: JObject, fieldID: JFieldID)
+    JNI.get_double_field(env, obj, fieldID)
+  end
+
+  def set_object_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JObject)
+    JNI.set_object_field(env, obj, fieldID, val)
+  end
+  def set_boolean_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JBoolean)
+    JNI.set_boolean_field(env, obj, fieldID, val)
+  end
+  def set_byte_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JByte)
+    JNI.set_byte_field(env, obj, fieldID, val)
+  end
+  def set_char_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JChar)
+    JNI.set_char_field(env, obj, fieldID, val)
+  end
+  def set_short_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JShort)
+    JNI.set_short_field(env, obj, fieldID, val)
+  end
+  def set_int_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JInt)
+    JNI.set_int_field(env, obj, fieldID, val)
+  end
+  def set_long_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JLong)
+    JNI.set_long_field(env, obj, fieldID, val)
+  end
+  def set_float_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JFloat)
+    JNI.set_float_field(env, obj, fieldID, val)
+  end
+  def set_double_field(env: JNIEnv, obj: JObject, fieldID: JFieldID, val: JDouble)
+    JNI.set_double_field(env, obj, fieldID, val)
+  end
+
+  def get_static_method_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
+    JNI.get_static_method_id(env, clazz, name, sig)
+  end
+
+  def call_static_object_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_object_method(env, clazz, methodID, args)
+  end
+  def call_static_object_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_object_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_boolean_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_boolean_method(env, clazz, methodID, args)
+  end
+  def call_static_boolean_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    funcitons.call_static_boolean_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_byte_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_byte_method(env, clazz, methodID, args)
+  end
+  def call_static_byte_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_byte_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_char_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_char_char(env, clazz, methodID, args)
+  end
+  def call_static_char_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_char_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_short_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_short_method(env, clazz, methodID, args)
+  end
+  def call_static_short_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_short_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_int_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_int_method(env, clazz, methodID, args)
+  end
+  def call_static_int_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_int_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_long_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_long_method(env, clazz, methodID, args)
+  end
+  def call_static_long_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_long_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_float_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_float_method(env, clazz, methodID, args)
+  end
+  def call_static_float_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_float_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_double_method(env: JNIEnv, clazz: JClass, methodID: JMethodID, *args)
+    JNI.call_static_double_method(envm clazz, methodID, args)
+  end
+  def call_static_double_method_a(env: JNIEnv, clazz: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_double_method_a(env, clazz, methodID, args)
+  end
+
+  def call_static_void_method(env: JNIEnv, cls: JClass, methodID: JMethodID, *args)
+    JNI.call_static_void_method(env, cls, methodID, args)
+  end
+  def call_static_void_method_a(env: JNIEnv, cls: JClass, methodID: JMethodID, args: Array(JValue))
+    JNI.call_static_void_method_a(env, cls, methodID, args)
+  end
+
+  def get_static_field_id(env: JNIEnv, clazz: JClass, name: String, sig: String)
+    JNI.get_static_field_id(env, clazz, fieldID)
+  end
+  def get_static_object_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_object_field(env, clazz, fieldID)
+  end
+  def get_static_boolean_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_boolean_field(env, clazz, fieldID)
+  end
+  def get_static_byte_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_byte_field(env, clazz, fieldID)
+  end
+  def get_static_char_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_char_field(env, clazz, fieldID)
+  end
+  def get_static_short_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_short_field(env, clazz, fieldID)
+  end
+  def get_static_int_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_int_field(env, clazz, fieldID)
+  end
+  def get_static_long_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_long_field(env, clazz, fieldID)
+  end
+  def get_static_float_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_float_field(env, clazz, fieldID)
+  end
+  def get_static_double_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID)
+    JNI.get_static_double_field(env, clazz, fieldID)
+  end
+
+  def set_static_object_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JObject)
+    JNI.set_static_object_field(env, clazz, fieldID, val)
+  end
+  def set_static_boolean_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JBoolean)
+    JNI.set_static_boolean_field(env, clazz, fieldID, val)
+  end
+  def set_static_byte_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JByte)
+    JNI.set_static_byte_field(env, clazz, fieldID, val)
+  end
+  def set_static_char_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JChar)
+    JNI.set_static_char_field(env, clazz, fieldID, val)
+  end
+  def set_static_short_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JShort)
+    JNI.set_static_short_field(env, clazz, fieldID, val)
+  end
+  def set_static_int_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JInt)
+    JNI.set_static_int_field(env, clazz, fieldID, val)
+  end
+  def set_static_long_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JLong)
+    JNI.set_static_long_field(env, clazz, fieldID, val)
+  end
+  def set_static_float_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JFloat)
+    JNI.set_static_float_field(env, clazz, fieldID, val)
+  end
+  def set_static_double_field(env: JNIEnv, clazz: JClass, fieldID: JFieldID, val: JDouble)
+    JNI.set_static_double_field(env, clazz, fieldID, val)
+  end
+
+  def new_string(env: JNIEnv, unicode: String, len: JSize)
+    JNI.new_string(env, unicode, len)
+  end
+  def get_string_length(env: JNIEnv, str: JString)
+    JNI.get_string_length(env, str)
+  end
+  def get_string_chars(env: JNIEnv, str: JString, isCopy: JBoolean)
+    JNI.get_string_chars(env, str, isCopy)
+  end
+  def release_string_chars(env: JNIEnv, str: JString, chars: JString)
+    JNI.release_string_chars(env, str, chars)
+  end
+
+  def new_string_utf(env: JNIEnv, utf: String)
+    JNI.new_string_utf(env, utf)
+  end
+  def new_string_utf_length(env: JNIEnv, str: JString)
+    JNI.new_string_utf_length(env, str)
+  end
+  def get_string_utf_chars(env: JNIEnv, str: String, isCopy: JBoolean)
+    JNI.get_string_utf_chars(env, str, isCopy)
+  end
+  def release_string_utf_chars(env: JNIEnv, str: JString, chars: String)
+    JNI.release_string_utf_chars(env, str, chars)
+  end
+
+  def get_array_length(env: JNIEnv, array: JArray)
+    JNI.get_array_length(env, array)
+  end
+
+  def get_object_array(env: JNIEnv, len: JSize, clazz: JClass, init: JObject)
+    JNI.get_object_array(env, len, clazz, init)
+  end
+  def get_object_array_element(env: JNIEnv, array: JObjectArray, index: JSize)
+    JNI.get_object_array_element(env, array, index)
+  end
+  def set_object_array_element(env: JNIEnv, array: JObjectArray, index: JSize, val: JObject)
+    JNI.set_object_array_element(env, array, index, val)
+  end
+
+  def new_boolean_array(env: JNIEnv, len: JSize)
+    JNI.new_boolean_array(env, len)
+  end
+  def new_byte_array(env: JNIEnv, len: JSize)
+    JNI.new_byte_array(env, len)
+  end
+  def new_char_array(env: JNIEnv, len: JSize)
+    JNI.new_char_array(env, len)
+  end
+  def new_short_array(env: JNIEnv, len: JSize)
+    JNI.new_short_array(env, len)
+  end
+  def new_int_array(env: JNIEnv, len: JSize)
+    JNI.new_int_array(env, len)
+  end
+  def new_long_array(env: JNIEnv, len: JSize)
+    JNI.new_long_array(env, len)
+  end
+  def new_float_array(env: JNIEnv, len: JSize)
+    JNI.new_float_array(env, len)
+  end
+  def new_double_array(env: JNIEnv, len: JSize)
+    JNI.new_double_array(env, len)
+  end
+
+  def get_boolean_array_elements(env: JNIEnv, array: JBooleanArray, isCopy: JBoolean)
+    JNI.get_boolean_array_elements(env, array, isCopy)
+  end
+  def get_byte_array_elements(env: JNIEnv, array: JByteArray, isCopy: JBoolean)
+    JNI.get_byte_array_elements(env, array, isCopy)
+  end
+  def get_char_array_elements(env: JNIEnv, array: JCharArray, isCopy: JBoolean)
+    JNI.get_char_array_elements(env, array, isCopy)
+  end
+  def get_short_array_elements(env: JNIEnv, array: JShortArray, isCopy: JBoolean)
+    JNI.get_short_array_elements(env, array, isCopy)
+  end
+  def get_int_array_elements(env: JNIEnv, array: JIntArray, isCopy: JBoolean)
+    JNI.get_int_array_elements(env, array, isCopy)
+  end
+  def get_long_array_elements(env: JNIEnv, array: JLongArray, isCopy: JBoolean)
+    JNI.get_long_array_elements(env, array, isCopy)
+  end
+  def get_float_array_elements(env: JNIEnv, array: JFloatArray, isCopy: JBoolean)
+    JNI.get_float_array_elements(env, array, isCopy)
+  end
+  def get_double_array_elements(env: JNIEnv, array: JDoubleArray, isCopy: JBoolean)
+    JNI.get_double_array_elements(env, array, isCopy)
+  end
+
+  def release_boolean_array_elements(env: JNIEnv, array: JBooleanArray, elems: JBoolean*, mode: JInt)
+    JNI.release_boolean_array_elements(env, array, elems, mode)
+  end
+  def release_byte_array_elements(env: JNIEnv, array: JByteArray, elems: JByte*, mode: JInt)
+    JNI.release_byte_array_elements(env, array, elems, mode)
+  end
+  def release_char_array_elements(env: JNIEnv, array: JCharArray, elems: JChar*, mode: JInt)
+    JNI.release_char_array_elements(env, array, elems, mode)
+  end
+  def release_short_array_elements(env: JNIEnv, array: JShortArray, elems: JShort*, mode: JInt)
+    JNI.release_short_array_elements(env, array, elems, mode)
+  end
+  def release_int_array_elements(env: JNIEnv, array: JIntArray, elems: JInt*, mode: JInt)
+    JNI.release_int_array_elements(env, array, elems, mode)
+  end
+  def release_long_array_elements(env: JNIEnv, array: JLongArray, elems: JLong*, mode: JInt)
+    JNI.release_long_array_elements(env, array, elems, mode)
+  end
+  def release_float_array_elements(env: JNIEnv, array: JFloatArray, elems: JFloat*, mode: JInt)
+    JNI.release_float_array_elements(env, array, elemes, mode)
+  end
+  def release_double_array_elements(env: JNIEnv, array: JDoubleArray, elems: JDouble*, mode: JInt)
+    JNI.release_double_array_elements(env, array, elems, mode)
+  end
+
+  def get_boolean_array_region(env: JNIEnv, array: JBooleanArray, start: JSize, l: JSize, buf: JBoolean)
+    JNI.get_boolean_array_region(env, array, start, len, buf)
+  end
+  def get_byte_array_region(env: JNIEnv, array: JByteArray, start: JSize, len: JSize, buf: JByte)
+    JNI.get_byte_array_region(env, array, start, len, buf)
+  end
+  def get_char_array_region(env: JNIEnv, array: JCharArray, start: JSize, len: JSize, buf: JChar)
+    JNI.get_short_array_region(env, array, start, len, buf)
+  end
+  def get_short_array_region(env: JNIEnv, array: JShortArray, start: JSize, len: JSize, buf: JShort)
+    JNI.get_short_array_region(env, array, start, len, buf)
+  end
+  def get_int_array_region(env: JNIEnv, array: JIntArray, start: JSize, len: JSize, buf: JInt)
+    JNI.get_int_array_region(env, array, start, len, buf)
+  end
+  def get_long_array_region(env: JNIEnv, array: JLongArray, start: JSize, len: JSize, buf: JLong)
+    JNI.get_long_array_region(env, array, start, len, buf)
+  end
+  def get_float_array_region(env: JNIEnv, array: JFloatArray, start: JSize, len: JSize, buf: JFloat)
+    JNI.get_float_array_region(env, array, start, len, buf)
+  end
+  def get_double_array_region(env: JNIEnv, array: JDoubleArray, start: JSize, len: JSize, buf: JDouble)
+    JNI.get_double_array_region(env, array, start, len, buf)
+  end
+
+  def set_boolean_array_region(env: JNIEnv, array: JBooleanArray, start: JSize, l: JSize, buf: JBoolean)
+    JNI.set_boolean_array_region(env, array, start, len, buf)
+  end
+  def set_byte_array_region(env: JNIEnv, array: JByteArray, start: JSize, len: JSize, buf: JByte)
+    JNI.set_byte_array_region(env, array, start, len, buf)
+  end
+  def set_char_array_region(env: JNIEnv, array: JCharArray, start: JSize, len: JSize, buf: JChar)
+    JNI.set_char_array_region(env, array, start, len, buf)
+  end
+  def set_short_array_region(env: JNIEnv, array: JShortArray, start: JSize, len: JSize, buf: JShort)
+    JNI.set_short_array_region(env, array, start, len, buf)
+  end
+  def set_int_array_region(env: JNIEnv, array: JIntArray, start: JSize, len: JSize, buf: JInt)
+    JNI.set_int_array_region(env, array, start, len, buf)
+  end
+  def set_long_array_region(env: JNIEnv, array: JLongArray, start: JSize, len: JSize, buf: JLong)
+    JNI.set_long_array_region(env, array, start, len, buf)
+  end
+  def set_float_array_region(env: JNIEnv, array: JFloatArray, start: JSize, len: JSize, buf: JFloat)
+    JNI.set_float_array_region(env, array, start, len, jsize, buf)
+  end
+  def set_double_array_region(env: JNIEnv, array: JDoubleArray, start: JSize, len: JSize, buf: JDouble)
+    JNI.set_double_array_region(env, array, start, len, buf)
+  end
+
+  def register_natives(env: JNIEnv, clazz: JClass, methods: JNINativeMethod*, nMethods: JInt)
+    JNI.register_natives(env, clazz, methods, nMethods)
+  end
+  def unregister_natives(env: JNIEnv, clazz: JClass)
+    JNI.unregister_natives(env, clazz)
+  end
+
+  def monitor_enter(env: JNIEnv, obj: JObject)
+    JNI.monitor_enter(env, obj)
+  end
+  def monitor_exit(env: JNIEnv, obj: JObject)
+    JNI.monitor_exit(env, obj)
+  end
+
+  def get_java_vm(env: JNIEnv, vm: JavaVM)
+    JNI.get_java_vm(env, vm)
+  end
+
+  def get_string_region(env: JNIEnv, str: JString, start: JSize, len: JSize, buf: JChar)
+    JNI.get_string_region(env, str, start, len, buf)
+  end
+  def get_string_utf_region(env: JNIEnv, str: JString, start: JSize, len: JSize, buf: String)
+    JNI.get_string_utf_region(env, str, start, len, buf)
+  end
+
+  def get_primitive_array_critical(env: JNIEnv, array: JArray, isCopy: JBoolean)
+    JNI.get_primitive_array_critical(env, array, isCopy)
+  end
+  def release_primitive_array_critical(env: JNIEnv, array: JArray, carray: Void, mode: JInt)
+    JNI.release_primitive_array_critical(env, array, carray, mode)
+  end
+
+  def get_string_critial(env: JNIEnv, str: JString, isCopy: JBoolean)
+    JNI.get_string_critical(env, str, isCopy)
+  end
+  def release_string_critical(env: JNIEnv, str: JString, cstring: JString)
+    JNI.release_string_critical(env, str, cstring)
+  end
+
+  def new_weal_global_ref(env: JNIEnv, obj: JObject)
+    JNI.new_weak_global_ref(env, obj)
+  end
+  def delete_weak_global_ref(env: JNIEnv, ref: JWeak)
+    funcitons.delete_weak_global_ref(env, ref)
+  end
+
+  def exception_check(env: JNIEnv)
+    JNI.exception_check(env)
+  end
+
+  def new_direct_byte_buffer(env: JNIEnv, address: Void*, capacity: JLong)
+    JNI.get_direct_byte_buffer(env, address, capacity)
+  end
+  def get_direct_buffer_address(env: JNIEnv, buf: JObject)
+    JNI.get_direct_buffer_address(env, bug)
+  end
+  def get_direct_buffer_capacity(env: JNIEnv, buf: JObject)
+    JNI.get_direct_buffer_capacity(env, buf)
+  end
+
+  def get_object_ref_type(env: JNIEnv, obj: JObject)
+    JNI.get_object_ref_type(env, obj)
+  end
 end
